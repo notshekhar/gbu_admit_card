@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+        <title>Download your admit card</title>
+        <link rel="stylesheet" href="./css/index.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        />
+        <script src="./js/cookie.js"></script>
+    </head>
+    <body>
+        <!-- download div -->
+        <div class="download">
+            <div class="close"><i></i></div>
+            <div class="header">
+                <button class="downbtn">Download</button>
+            </div>
+            <div class="admit_card_image">
+                <canvas></canvas>
+            </div>
+        </div>
+        <div class="login_wrap">
+            <div class="close"></div>
+            <div class="wrap">
+                <i class="close_btn fas fa-times fa-2x"></i>
+                <input
+                    type="text"
+                    class="username"
+                    placeholder="Enter Username"
+                />
+                <input
+                    type="password"
+                    class="password"
+                    placeholder="Enter password"
+                />
+                <button>Login</button>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="header">
+                <div class="logo">
+                    <img src="./images/logo.png" alt="" />
+                </div>
+                <!-- <div class="tabs"></div> -->
+                <div class="admin">
+                    <button class="login">Admin Login</button>
+                </div>
+            </div>
+            <div class="strip"></div>
+            <!-- <img src="./images/_dsf8951.jpg" alt=""> -->
+            <div class="body">
+                <div class="fonts">
+                    <span>Download your Admit Card</span>
+                </div>
+                <div class="wrap_body">
+                    <input
+                        type="text"
+                        placeholder="Enter your roll no, eg: 18/bec/046"
+                        class="roll_no inp"
+                        name="roll_no"
+                        onkeyup="this.value = this.value.toUpperCase()"
+                    />
+                    <input type="date" name="dob" class="birtday inp" />
+                    <div class="drop_photo">
+                        <input type="file" accept="image/*" />
+                        <span class="choose">Choose a image </span>or
+                        <span>drag and drop your photo here </span>
+                    </div>
+                    <div class="drop_signature">
+                        <input type="file" accept="image/*" />
+                        <span class="choose">Choose a image </span>or
+                        <span>drag and drop your signature image here </span>
+                    </div>
+                    <button class="submit">SUBMIT</button>
+                </div>
+            </div>
+            <!-- footer  -->
+            <div class="footer">
+                <div class="top_footer">
+                    <div class="top_footer_wrap">
+                        <div class="section">
+                            <div class="contact_icons">
+                                <a href="" class="contact_list" target="_blank"
+                                    ><img src="" alt=""
+                                /></a>
+                                <a href="" class="contact_list" target="_blank"
+                                    ><img src="" alt=""
+                                /></a>
+                                <a href="" class="contact_list" target="_blank"
+                                    ><img src="" alt=""
+                                /></a>
+                                <a href="" class="contact_list" target="_blank"
+                                    ><img src="" alt=""
+                                /></a>
+                            </div>
+                            <div class="contact_address">
+                                Gautam Buddha University Greater Noida Gautam
+                                Budh Nagar Uttar Pradesh (India) - 201310 Phone
+                                No.: 0120-2344200
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom_footer">
+                    Copyright © 2009 Gautam Buddha University. All rights
+                    reserved.
+                </div>
+            </div>
+            <!-- <div class="topstrip">
+                Made by&nbsp;&nbsp;
+                <a href="https://notshekhar.github.io/" target="_blank"
+                    >Shekhar Tyagi</a
+                >&nbsp;&nbsp;With&nbsp;&nbsp;<span
+                    ><i class="fas fa-heart"></i
+                ></span>
+                <span class="instagram">
+                <a href="https://instagram.com/notshekhar" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </span>
+            </div> -->
+        </div>
+        <script src="./js/index.js"></script>
+    </body>
+</html>
