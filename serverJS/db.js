@@ -2,11 +2,12 @@ const { i, b64 } = require("nyz")
 const { promisify } = require("util")
 const { MD5, encodeJSON, decodeJSON } = require("./encryption")
 const path = require("path")
+require("dotenv").config()
 
 let pool = require("mysql").createConnection({
     host: "localhost",
     user: "root",
-    password: "shekhar2303",
+    password: process.env.DB_PASS,
     database: "students",
 })
 
