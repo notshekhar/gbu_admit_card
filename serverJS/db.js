@@ -1,4 +1,3 @@
-const mysql = require("mysql")
 const { i, b64 } = require("nyz")
 const { promisify } = require("util")
 const { MD5, encodeJSON, decodeJSON } = require("./encryption")

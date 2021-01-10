@@ -141,6 +141,6 @@ app.get("/api/update", async (req, res, next) => {
     }
 })
 app.use(errorHandler)
-const server = app.listen(80 || process.env.PORT, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
     console.log(`listening to port -> ${server.address().port}`)
 })

@@ -152,12 +152,12 @@ drop_signature.ondrop = (e) => {
 const roll_no = document.querySelector(".roll_no")
 const dob = document.querySelector(".birtday")
 
-roll_no.onkeydown = async (_) => {
-    let res = await fetch("/api/check_roll_no")
-    let data = res.body.json()
-    if (data.exist) console.log("roll no valid")
-    else console.log("not valid")
-}
+// roll_no.onkeydown = async (_) => {
+//     let res = await fetch("/api/check_roll_no")
+//     let data = res.body.json()
+//     if (data.exist) console.log("roll no valid")
+//     else console.log("not valid")
+// }
 
 const submit = document.querySelector(".submit")
 
@@ -440,3 +440,5 @@ submit_login_btn.addEventListener("click", async function () {
     }
     console.log(resData)
 })
+
+// notsh3Khar
