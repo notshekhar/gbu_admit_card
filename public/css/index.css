@@ -7,11 +7,28 @@
     src: url(../fonts/normal);
 }
 :root {
-    /* --im: url(../images/_dsf8951.jpg); */
+    --im: url(../images/_dsf8951.webp);
     --font: normal;
     --bold: noe;
 }
 
+.loading {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #f5f7f9;
+    /* justify-content: center;
+    align-items: center; */
+    z-index: 100;
+    font-weight: 800;
+    background-image: url(../images/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 300px;
+}
 .topstrip {
     position: relative;
     background: #202020;
@@ -85,13 +102,13 @@
     position: relative;
     height: 521px;
     width: 100%;
-    transition: all 400ms;
-    /* background-image: var(--im); */
-    background-image: url(../images/_dsf8951.webp);
+    transition: all 2000ms;
+    background-image: var(--im);
+    /* background-image: url(../images/_dsf8951.webp); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    animation: bg_change 10000ms infinite forwards;
+    /* animation: bg_change 10000ms infinite forwards; */
 }
 @keyframes bg_change {
     12.5% {

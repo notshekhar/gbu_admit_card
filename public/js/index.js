@@ -1,16 +1,58 @@
 // const URL =
 // "https://raw.githubusercontent.com/notshekhar/gbu_attendance/master/images/"
+const loading = document.querySelector(".loading")
+
+function showLoading() {
+    loading.style.display = "flex"
+}
+function hideLoading() {
+    loading.style.display = "none"
+}
+
+const blobToBase64 = (blob) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(blob)
+    return new Promise((resolve) => {
+        reader.onloadend = () => {
+            resolve(reader.result)
+        }
+    })
+}
+
 const URL = "/images/"
-let images = ["_dsf8951.jpg", "_dsf8963.jpg", "_dsf8982.jpg", "_dsf8724a.jpg"]
+let images = [
+    "_dsf8951.webp",
+    "_dsf8963.webp",
+    "_dsf8982.webp",
+    "_dsf8724a.webp",
+]
 let i = 1
 let im
 
-// setInterval(() => {
-//     im = images[i]
-//     cssv("im", `url(${URL + im})`)
-//     i++
-//     i %= images.length
-// }, 2000)
+let imagesURL = []
+
+let images_loaded = false
+
+showLoading()
+
+images.forEach(async (image, i) => {
+    let res = await fetch(`/images/${image}`)
+    let data = await res.blob()
+    let base64 = await blobToBase64(data)
+    imagesURL.push(base64)
+    if (i == images.length - 1) {
+        hideLoading()
+        images_loaded = true
+    }
+})
+setInterval(() => {
+    if (images_loaded) {
+        im = imagesURL[i]
+        cssv("im", `url(${im})`)
+        i++
+        i %= images.length
+    }
+}, 3000)
 
 //get and set css variables
 function cssv(name, value) {
@@ -187,6 +229,7 @@ submit.onclick = async () => {
         }
     }
     try {
+        showLoading()
         let res = await fetch("/api/getdetails", {
             method: "POST",
             headers: {
@@ -213,7 +256,9 @@ submit.onclick = async () => {
             // else
         }
         if (resData.error) alert(resData.message)
+        hideLoading()
     } catch (err) {
+        hideLoading()
         alert(err.message)
     }
 }
@@ -271,12 +316,14 @@ function showDataOnCanvas(details) {
     }
 
     function draw() {
+        showLoading()
         let image = new Image()
         image.src = "../images/a4.png"
         image.onload = () => {
             canvas.width = image.width
             canvas.height = image.height
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+            hideLoading()
             canvasText(
                 details.Student_Name,
                 student_copy_positions.student_name[0],
