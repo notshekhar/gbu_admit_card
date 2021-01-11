@@ -3,14 +3,14 @@
 const URL = "/images/"
 let images = ["_dsf8951.jpg", "_dsf8963.jpg", "_dsf8982.jpg", "_dsf8724a.jpg"]
 let i = 1
-let im = images[0]
+let im
 
-setInterval(() => {
-    im = images[i]
-    cssv("im", `url(${URL + im})`)
-    i++
-    if (i == images.length) i = 0
-}, 3000)
+// setInterval(() => {
+//     im = images[i]
+//     cssv("im", `url(${URL + im})`)
+//     i++
+//     i %= images.length
+// }, 2000)
 
 //get and set css variables
 function cssv(name, value) {
@@ -37,116 +37,116 @@ function validImage(filename) {
 
 history.pushState({ page: "main" }, "", "")
 
-//photo
-const choose_photo = document.querySelector(".drop_photo > input")
-const drag_drop = document.querySelector(".drop_photo")
-const choose_div = document.querySelector(".drop_photo > .choose")
-//file change
-choose_photo.onchange = (e) => {
-    let file = choose_photo.files[0]
-    if (!validImage(file.name)) return
-    let reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-        window.photo = reader.result
-        drag_drop.innerHTML = file.name
-        let image = new Image()
-        image.src = reader.result
-        image.height = 100
-        drag_drop.prepend(image)
-    }
-}
+// //photo
+// const choose_photo = document.querySelector(".drop_photo > input")
+// const drag_drop = document.querySelector(".drop_photo")
+// const choose_div = document.querySelector(".drop_photo > .choose")
+// //file change
+// choose_photo.onchange = (e) => {
+//     let file = choose_photo.files[0]
+//     if (!validImage(file.name)) return
+//     let reader = new FileReader()
+//     reader.readAsDataURL(file)
+//     reader.onloadend = () => {
+//         window.photo = reader.result
+//         drag_drop.innerHTML = file.name
+//         let image = new Image()
+//         image.src = reader.result
+//         image.height = 100
+//         drag_drop.prepend(image)
+//     }
+// }
 
-//choose file click
-// choose_div.onclick = (e) => {
+// //choose file click
+// // choose_div.onclick = (e) => {
+// //     choose_photo.click()
+// // }
+// drag_drop.onclick = (e) => {
 //     choose_photo.click()
 // }
-drag_drop.onclick = (e) => {
-    choose_photo.click()
-}
-//handling drag drop
-drag_drop.ondragover = (e) => {
-    e.preventDefault()
-    drag_drop.classList.add("dragHover")
-}
-drag_drop.ondragleave = (e) => {
-    e.preventDefault()
-    drag_drop.classList.remove("dragHover")
-}
-drag_drop.ondrop = (e) => {
-    drag_drop.classList.remove("dragHover")
-    e.preventDefault()
-    e.stopPropagation()
-    choose_photo.files = e.dataTransfer.files
-    let file = choose_photo.files[0]
-    if (!validImage(file.name)) return
-    let reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-        window.photo = reader.result
-        drag_drop.innerHTML = file.name
-        let image = new Image()
-        image.src = reader.result
-        image.height = 100
-        drag_drop.prepend(image)
-    }
-}
+// //handling drag drop
+// drag_drop.ondragover = (e) => {
+//     e.preventDefault()
+//     drag_drop.classList.add("dragHover")
+// }
+// drag_drop.ondragleave = (e) => {
+//     e.preventDefault()
+//     drag_drop.classList.remove("dragHover")
+// }
+// drag_drop.ondrop = (e) => {
+//     drag_drop.classList.remove("dragHover")
+//     e.preventDefault()
+//     e.stopPropagation()
+//     choose_photo.files = e.dataTransfer.files
+//     let file = choose_photo.files[0]
+//     if (!validImage(file.name)) return
+//     let reader = new FileReader()
+//     reader.readAsDataURL(file)
+//     reader.onloadend = () => {
+//         window.photo = reader.result
+//         drag_drop.innerHTML = file.name
+//         let image = new Image()
+//         image.src = reader.result
+//         image.height = 100
+//         drag_drop.prepend(image)
+//     }
+// }
 
-//signature
-const drop_signature = document.querySelector(".drop_signature")
-const choose_signature = document.querySelector(".drop_signature > input")
-const choose_signature_div = document.querySelector(".drop_signature > .choose")
-//file change
-choose_signature.onchange = (e) => {
-    let file = choose_signature.files[0]
-    if (!validImage(file.name)) return
-    let reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-        window.signature = reader.result
-        drop_signature.innerHTML = file.name
-        let image = new Image()
-        image.src = reader.result
-        image.height = 100
-        drop_signature.prepend(image)
-    }
-}
+// //signature
+// const drop_signature = document.querySelector(".drop_signature")
+// const choose_signature = document.querySelector(".drop_signature > input")
+// const choose_signature_div = document.querySelector(".drop_signature > .choose")
+// //file change
+// choose_signature.onchange = (e) => {
+//     let file = choose_signature.files[0]
+//     if (!validImage(file.name)) return
+//     let reader = new FileReader()
+//     reader.readAsDataURL(file)
+//     reader.onloadend = () => {
+//         window.signature = reader.result
+//         drop_signature.innerHTML = file.name
+//         let image = new Image()
+//         image.src = reader.result
+//         image.height = 100
+//         drop_signature.prepend(image)
+//     }
+// }
 
-//choose file click
-// choose_signature_div.onclick = (e) => {
+// //choose file click
+// // choose_signature_div.onclick = (e) => {
+// //     choose_signature.click()
+// // }
+// drop_signature.onclick = (e) => {
 //     choose_signature.click()
 // }
-drop_signature.onclick = (e) => {
-    choose_signature.click()
-}
-//handling drag drop
-drop_signature.ondragover = (e) => {
-    e.preventDefault()
-    drop_signature.classList.add("dragHover")
-}
-drop_signature.ondragleave = (e) => {
-    e.preventDefault()
-    drop_signature.classList.remove("dragHover")
-}
-drop_signature.ondrop = (e) => {
-    drop_signature.classList.remove("dragHover")
-    e.preventDefault()
-    e.stopPropagation()
-    choose_signature.files = e.dataTransfer.files
-    let file = choose_signature.files[0]
-    if (!validImage(file.name)) return
-    console.log("okay")
-    let reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onloadend = () => {
-        window.signature = reader.result
-        drop_signature.innerHTML = file.name
-        let image = new Image()
-        image.src = reader.result
-        image.height = 100
-        drop_signature.prepend(image)
-    }
-}
+// //handling drag drop
+// drop_signature.ondragover = (e) => {
+//     e.preventDefault()
+//     drop_signature.classList.add("dragHover")
+// }
+// drop_signature.ondragleave = (e) => {
+//     e.preventDefault()
+//     drop_signature.classList.remove("dragHover")
+// }
+// drop_signature.ondrop = (e) => {
+//     drop_signature.classList.remove("dragHover")
+//     e.preventDefault()
+//     e.stopPropagation()
+//     choose_signature.files = e.dataTransfer.files
+//     let file = choose_signature.files[0]
+//     if (!validImage(file.name)) return
+//     console.log("okay")
+//     let reader = new FileReader()
+//     reader.readAsDataURL(file)
+//     reader.onloadend = () => {
+//         window.signature = reader.result
+//         drop_signature.innerHTML = file.name
+//         let image = new Image()
+//         image.src = reader.result
+//         image.height = 100
+//         drop_signature.prepend(image)
+//     }
+// }
 
 //
 const roll_no = document.querySelector(".roll_no")

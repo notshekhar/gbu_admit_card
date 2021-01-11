@@ -7,7 +7,7 @@
     src: url(../fonts/normal);
 }
 :root {
-    --im: url(../images/_dsf8951.jpg);
+    /* --im: url(../images/_dsf8951.jpg); */
     --font: normal;
     --bold: noe;
 }
@@ -85,11 +85,27 @@
     position: relative;
     height: 521px;
     width: 100%;
-    transition: all 2s;
-    background-image: var(--im);
+    transition: all 400ms;
+    /* background-image: var(--im); */
+    background-image: url(../images/_dsf8951.webp);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    animation: bg_change 10000ms infinite forwards;
+}
+@keyframes bg_change {
+    12.5% {
+        background-image: url(../images/_dsf8951.webp);
+    }
+    37.5% {
+        background-image: url(../images/_dsf8963.webp);
+    }
+    62.5% {
+        background-image: url(../images/_dsf8982.webp);
+    }
+    87.5% {
+        background-image: url(../images/_dsf8724a.webp);
+    }
 }
 .fonts {
     width: 600px;
@@ -106,9 +122,10 @@
     font-family: var(--bold);
     font-size: 50px;
     font-weight: bold;
+    /* -webkit-text-stroke: 0.1px rgb(55, 55, 55); */
     /* word-spacing: 12px; */
     letter-spacing: 3px;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+    text-shadow: 1px 1px 4px rgb(33, 33, 33);
 }
 .birth {
     font-family: var(--font);
@@ -116,10 +133,12 @@
 }
 .wrap_body {
     position: absolute;
-    height: 470px;
+    /* height: 470px; */
+    height: 300px;
     width: 400px;
     right: 100px;
-    top: calc(50% - 235px);
+    /* top: calc(50% - 235px); */
+    top: calc(50% - 150px);
     background: white;
     border-radius: 2px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
