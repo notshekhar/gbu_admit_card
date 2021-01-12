@@ -2,7 +2,6 @@ const { i, b64 } = require("nyz")
 const { promisify } = require("util")
 const { MD5, encodeJSON, decodeJSON } = require("./encryption")
 const path = require("path")
-const { stat } = require("fs")
 require("dotenv").config()
 
 let pool = require("mysql").createConnection({

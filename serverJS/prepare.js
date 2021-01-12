@@ -119,7 +119,7 @@ function update() {
         if (student[12] == "due") {
             let roll_no = new String(student[2]).toUpperCase()
             let update = await query(
-                'update students set `Fee Status` = "Not Sumbitted" where Roll_Number=?',
+                'update students set `Fee Status` = "Not Submitted" where Roll_Number=?',
                 [roll_no]
             )
         }
