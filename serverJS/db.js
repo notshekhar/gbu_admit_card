@@ -2,6 +2,7 @@ const { i, b64 } = require("nyz")
 const { promisify } = require("util")
 const { MD5, encodeJSON, decodeJSON } = require("./encryption")
 const path = require("path")
+const { stat } = require("fs")
 require("dotenv").config()
 
 let pool = require("mysql").createConnection({
@@ -27,16 +28,20 @@ async function getDetails(roll, dob, photo, signature) {
         //     b64(path.join(process.cwd(), `/public/${d["Photo Upload(.jpg)"]}`)),
         //     b64(path.join(process.cwd(), `/public/${d["Signature(.jpg)"]}`))
         // )
-        i(d, photo, signature)
+        await i(d, photo, signature)
+        return { get: true, data }
+    } else {
+        return { get: false, message: "Data Not Found" }
     }
-    return data
 }
 async function checkFeeStatus(roll_no) {
     let status = await query(
         "select `Fee Status` from students where Roll_number=?",
         [roll_no]
     )
-    return status[0]["Fee Status"] == "Submitted" ? true : false
+    if (status.length == 1)
+        return status[0]["Fee Status"] == "Submitted" ? true : false
+    else return false
 }
 
 async function login(username, password) {

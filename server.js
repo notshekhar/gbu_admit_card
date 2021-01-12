@@ -50,7 +50,7 @@ app.post("/api/getdetails", async (req, res, next) => {
         let feePaid = await checkFeeStatus(roll_no)
         if (feePaid) {
             let details = await getDetails(roll_no, dateBirth, photo, signature)
-            res.json({ get: true, data: details })
+            res.json(details)
         } else {
             res.json({
                 get: false,

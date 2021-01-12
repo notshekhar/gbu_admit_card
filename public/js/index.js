@@ -260,8 +260,8 @@ submit.onclick = async () => {
             }),
         })
         let resData = await res.json()
+        // console.log(resData)
         if (resData.get) {
-            console.log(resData)
             if (resData.data.length <= 0) {
                 alert("No data found re-try entering roll no and date of birth")
                 resetForm()
@@ -377,14 +377,14 @@ function showDataOnCanvas(details) {
                 student_copy_positions.roll_no[1]
             )
             let photoImage = document.createElement("img")
-            photoImage.src = photo
+            photoImage.src = window.photo
             // photoImage.src = window.photo
             photoImage.onload = () => {
                 canvasImage(photoImage, student_copy_positions.photo)
                 canvasImage(photoImage, office_copy_positions.photo)
             }
             let signaturePhoto = document.createElement("img")
-            signaturePhoto.src = signature
+            signaturePhoto.src = window.signature
             // signaturePhoto.src = window.signature
             signaturePhoto.onload = () => {
                 canvasImage(signaturePhoto, student_copy_positions.signature)
