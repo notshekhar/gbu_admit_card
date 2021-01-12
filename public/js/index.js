@@ -1,4 +1,5 @@
 // const URL =
+
 // "https://raw.githubusercontent.com/notshekhar/gbu_attendance/master/images/"
 const loading = document.querySelector(".loading")
 
@@ -79,116 +80,132 @@ function validImage(filename) {
 
 history.pushState({ page: "main" }, "", "")
 
-// //photo
-// const choose_photo = document.querySelector(".drop_photo > input")
-// const drag_drop = document.querySelector(".drop_photo")
-// const choose_div = document.querySelector(".drop_photo > .choose")
-// //file change
-// choose_photo.onchange = (e) => {
-//     let file = choose_photo.files[0]
-//     if (!validImage(file.name)) return
-//     let reader = new FileReader()
-//     reader.readAsDataURL(file)
-//     reader.onloadend = () => {
-//         window.photo = reader.result
-//         drag_drop.innerHTML = file.name
-//         let image = new Image()
-//         image.src = reader.result
-//         image.height = 100
-//         drag_drop.prepend(image)
-//     }
-// }
+//photo
+const choose_photo = document.querySelector(".drop_photo > input")
+const drag_drop = document.querySelector(".drop_photo")
+const choose_div = document.querySelector(".drop_photo > .choose")
+//file change
+choose_photo.onchange = (e) => {
+    let file = choose_photo.files[0]
+    if (!validImage(file.name)) return
+    if (file.size > 1048576) {
+        alert("Photo size can't be more then 1mb re-upload")
+        return
+    }
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+        window.photo = reader.result
+        drag_drop.innerHTML = file.name
+        let image = new Image()
+        image.src = reader.result
+        image.height = 100
+        drag_drop.prepend(image)
+    }
+}
 
-// //choose file click
-// // choose_div.onclick = (e) => {
-// //     choose_photo.click()
-// // }
-// drag_drop.onclick = (e) => {
+//choose file click
+// choose_div.onclick = (e) => {
 //     choose_photo.click()
 // }
-// //handling drag drop
-// drag_drop.ondragover = (e) => {
-//     e.preventDefault()
-//     drag_drop.classList.add("dragHover")
-// }
-// drag_drop.ondragleave = (e) => {
-//     e.preventDefault()
-//     drag_drop.classList.remove("dragHover")
-// }
-// drag_drop.ondrop = (e) => {
-//     drag_drop.classList.remove("dragHover")
-//     e.preventDefault()
-//     e.stopPropagation()
-//     choose_photo.files = e.dataTransfer.files
-//     let file = choose_photo.files[0]
-//     if (!validImage(file.name)) return
-//     let reader = new FileReader()
-//     reader.readAsDataURL(file)
-//     reader.onloadend = () => {
-//         window.photo = reader.result
-//         drag_drop.innerHTML = file.name
-//         let image = new Image()
-//         image.src = reader.result
-//         image.height = 100
-//         drag_drop.prepend(image)
-//     }
-// }
+drag_drop.onclick = (e) => {
+    choose_photo.click()
+}
+//handling drag drop
+drag_drop.ondragover = (e) => {
+    e.preventDefault()
+    drag_drop.classList.add("dragHover")
+}
+drag_drop.ondragleave = (e) => {
+    e.preventDefault()
+    drag_drop.classList.remove("dragHover")
+}
+drag_drop.ondrop = (e) => {
+    drag_drop.classList.remove("dragHover")
+    e.preventDefault()
+    e.stopPropagation()
+    choose_photo.files = e.dataTransfer.files
+    let file = choose_photo.files[0]
+    if (!validImage(file.name)) return
+    if (file.size > 1048576) {
+        alert("Photo size can't be more then 1mb re-upload")
+        return
+    }
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+        window.photo = reader.result
+        drag_drop.innerHTML = file.name
+        let image = new Image()
+        image.src = reader.result
+        image.height = 100
+        drag_drop.prepend(image)
+    }
+}
 
-// //signature
-// const drop_signature = document.querySelector(".drop_signature")
-// const choose_signature = document.querySelector(".drop_signature > input")
-// const choose_signature_div = document.querySelector(".drop_signature > .choose")
-// //file change
-// choose_signature.onchange = (e) => {
-//     let file = choose_signature.files[0]
-//     if (!validImage(file.name)) return
-//     let reader = new FileReader()
-//     reader.readAsDataURL(file)
-//     reader.onloadend = () => {
-//         window.signature = reader.result
-//         drop_signature.innerHTML = file.name
-//         let image = new Image()
-//         image.src = reader.result
-//         image.height = 100
-//         drop_signature.prepend(image)
-//     }
-// }
+//signature
+const drop_signature = document.querySelector(".drop_signature")
+const choose_signature = document.querySelector(".drop_signature > input")
+const choose_signature_div = document.querySelector(".drop_signature > .choose")
+//file change
+choose_signature.onchange = (e) => {
+    let file = choose_signature.files[0]
+    if (!validImage(file.name)) return
+    if (file.size > 1048576) {
+        alert("Signature photo size can't be more then 1mb re-upload")
+        return
+    }
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+        window.signature = reader.result
+        drop_signature.innerHTML = file.name
+        let image = new Image()
+        image.src = reader.result
+        image.height = 100
+        drop_signature.prepend(image)
+    }
+}
 
-// //choose file click
-// // choose_signature_div.onclick = (e) => {
-// //     choose_signature.click()
-// // }
-// drop_signature.onclick = (e) => {
+//choose file click
+// choose_signature_div.onclick = (e) => {
 //     choose_signature.click()
 // }
-// //handling drag drop
-// drop_signature.ondragover = (e) => {
-//     e.preventDefault()
-//     drop_signature.classList.add("dragHover")
-// }
-// drop_signature.ondragleave = (e) => {
-//     e.preventDefault()
-//     drop_signature.classList.remove("dragHover")
-// }
-// drop_signature.ondrop = (e) => {
-//     drop_signature.classList.remove("dragHover")
-//     e.preventDefault()
-//     e.stopPropagation()
-//     choose_signature.files = e.dataTransfer.files
-//     let file = choose_signature.files[0]
-//     if (!validImage(file.name)) return
-//     console.log("okay")
-//     let reader = new FileReader()
-//     reader.readAsDataURL(file)
-//     reader.onloadend = () => {
-//         window.signature = reader.result
-//         drop_signature.innerHTML = file.name
-//         let image = new Image()
-//         image.src = reader.result
-//         image.height = 100
-//         drop_signature.prepend(image)
-//     }
-// }
+drop_signature.onclick = (e) => {
+    choose_signature.click()
+}
+//handling drag drop
+drop_signature.ondragover = (e) => {
+    e.preventDefault()
+    drop_signature.classList.add("dragHover")
+}
+drop_signature.ondragleave = (e) => {
+    e.preventDefault()
+    drop_signature.classList.remove("dragHover")
+}
+drop_signature.ondrop = (e) => {
+    drop_signature.classList.remove("dragHover")
+    e.preventDefault()
+    e.stopPropagation()
+    choose_signature.files = e.dataTransfer.files
+    let file = choose_signature.files[0]
+    if (!validImage(file.name)) return
+    if (file.size > 1048576) {
+        alert("Signature photo size can't be more then 1mb re-upload")
+        return
+    }
+    console.log("okay")
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+        window.signature = reader.result
+        drop_signature.innerHTML = file.name
+        let image = new Image()
+        image.src = reader.result
+        image.height = 100
+        drop_signature.prepend(image)
+    }
+}
 
 //
 const roll_no = document.querySelector(".roll_no")
@@ -219,8 +236,8 @@ submit.onclick = async () => {
     let data = {
         roll_no: roll_no.value,
         dob: dob.value,
-        // photo: window.photo,
-        // signature_photo: window.signature,
+        photo: window.photo,
+        signature_photo: window.signature,
     }
     for (let d in data) {
         if (!data[d]) {
@@ -235,7 +252,12 @@ submit.onclick = async () => {
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify({ roll_no: data.roll_no, dob: data.dob }),
+            body: JSON.stringify({
+                roll_no: data.roll_no,
+                dob: data.dob,
+                photo,
+                signature,
+            }),
         })
         let resData = await res.json()
         if (resData.get) {
@@ -355,14 +377,14 @@ function showDataOnCanvas(details) {
                 student_copy_positions.roll_no[1]
             )
             let photoImage = document.createElement("img")
-            photoImage.src = details["Photo Upload(.jpg)"]
+            photoImage.src = photo
             // photoImage.src = window.photo
             photoImage.onload = () => {
                 canvasImage(photoImage, student_copy_positions.photo)
                 canvasImage(photoImage, office_copy_positions.photo)
             }
             let signaturePhoto = document.createElement("img")
-            signaturePhoto.src = details["Signature(.jpg)"]
+            signaturePhoto.src = signature
             // signaturePhoto.src = window.signature
             signaturePhoto.onload = () => {
                 canvasImage(signaturePhoto, student_copy_positions.signature)

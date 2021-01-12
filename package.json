@@ -9,6 +9,7 @@
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
         "mysql": "^2.18.1",
+        "node-pandas": "^1.0.5",
         "nyz": "^1.2.3"
     },
     "devDependencies": {},

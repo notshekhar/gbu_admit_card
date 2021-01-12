@@ -150,12 +150,12 @@
 }
 .wrap_body {
     position: absolute;
-    /* height: 470px; */
-    height: 300px;
+    height: 470px;
+    /* height: 300px; */
     width: 400px;
     right: 100px;
-    /* top: calc(50% - 235px); */
-    top: calc(50% - 150px);
+    top: calc(50% - 235px);
+    /* top: calc(50% - 150px); */
     background: white;
     border-radius: 2px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);

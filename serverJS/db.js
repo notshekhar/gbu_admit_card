@@ -14,7 +14,7 @@ let pool = require("mysql").createConnection({
 const query = promisify(pool.query).bind(pool)
 const end = promisify(pool.end).bind(pool)
 
-async function getDetails(roll, dob) {
+async function getDetails(roll, dob, photo, signature) {
     let data = await query(
         "select * from students where  Roll_Number=? and `Date of Birth`=?",
         [roll, dob]
@@ -22,11 +22,12 @@ async function getDetails(roll, dob) {
     if (data.length == 1) {
         let d = {}
         for (let k in data[0]) d[k] = data[0][k]
-        i(
-            d,
-            b64(path.join(process.cwd(), `/public/${d["Photo Upload(.jpg)"]}`)),
-            b64(path.join(process.cwd(), `/public/${d["Signature(.jpg)"]}`))
-        )
+        // i(
+        //     d,
+        //     b64(path.join(process.cwd(), `/public/${d["Photo Upload(.jpg)"]}`)),
+        //     b64(path.join(process.cwd(), `/public/${d["Signature(.jpg)"]}`))
+        // )
+        i(d, photo, signature)
     }
     return data
 }

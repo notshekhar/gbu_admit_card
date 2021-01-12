@@ -18,7 +18,7 @@ const {
 } = require("./serverJS/db")
 
 const app = express()
-app.use(express.json(), cookieParser())
+app.use(express.json({ limit: "5mb" }), cookieParser())
 
 app.get("/:anything", async (req, res, next) => {
     const { anything } = req.params
@@ -39,7 +39,7 @@ app.get("/:anything", async (req, res, next) => {
 app.use(express.static("public"))
 
 app.post("/api/getdetails", async (req, res, next) => {
-    let { roll_no, dob } = req.body
+    let { roll_no, dob, photo, signature } = req.body
     let dateBirth = ""
     for (let i = 0; i < dob.length; i++) {
         if (dob[i] == "-") dateBirth += "/"
@@ -49,7 +49,7 @@ app.post("/api/getdetails", async (req, res, next) => {
     try {
         let feePaid = await checkFeeStatus(roll_no)
         if (feePaid) {
-            let details = await getDetails(roll_no, dateBirth)
+            let details = await getDetails(roll_no, dateBirth, photo, signature)
             res.json({ get: true, data: details })
         } else {
             res.json({
