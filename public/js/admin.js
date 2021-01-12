@@ -47,11 +47,11 @@ function createSchoolDropDown(data) {
         })
         select.append(school_dropdown_menu_item)
     })
-    select.append(
-        createElement("option", {
-            innerText: "Select School",
-        })
-    )
+    // select.append(
+    //     createElement("option", {
+    //         innerText: "Select School",
+    //     })
+    // )
     school_dropdown.append(select)
     header.append(school_dropdown)
 }

@@ -260,7 +260,7 @@ submit.onclick = async () => {
             }),
         })
         let resData = await res.json()
-        // console.log(resData)
+        console.log(resData)
         if (resData.get) {
             if (resData.data.length <= 0) {
                 alert("No data found re-try entering roll no and date of birth")
@@ -302,8 +302,8 @@ function showDataOnCanvas(details) {
     }
     const student_copy_positions = {
         name_of_school: [218, 238],
-        name_of_programme: [255, 270],
-        programme_code: [204, 306],
+        name_of_programme: [255, 270, 450],
+        // programme_code: [204, 306],
         student_name: [224, 339],
         examination_duration: [228, 388],
         aadhar_id: [177, 545],
@@ -314,19 +314,51 @@ function showDataOnCanvas(details) {
 
     const office_copy_positions = {
         name_of_school: [218, 1026],
-        name_of_programme: [255, 1063],
-        student_name: [224, 1105],
-        aadhar_id: [177, 1146],
-        roll_no: [588, 1105],
+        name_of_programme: [255, 1063, 450],
+        student_name: [224, 1125],
+        aadhar_id: [177, 1166],
+        roll_no: [588, 1125],
         photo: [739, 927, 961, 1118],
         signature: [738, 1139, 965, 1202],
     }
     // timing_morning_shift: [221, 424],
     // timing_evening_shift: [219, 477],
 
-    function canvasText(text, x, y) {
+    function canvasText(text, x, y, maxWidth) {
         ctx.font = "bold 18px Arial"
-        ctx.fillText(text, x, y)
+        if (maxWidth) ctx.fillText(text, x, y, maxWidth)
+        else ctx.fillText(text, x, y)
+    }
+    function printAt(context, text, x, y, lineHeight, fitWidth) {
+        fitWidth = fitWidth || 0
+        if (fitWidth <= 0) {
+            context.fillText(text, x, y)
+            return
+        }
+        var words = text.split(" ")
+        var currentLine = 0
+        var idx = 1
+        while (words.length > 0 && idx <= words.length) {
+            var str = words.slice(0, idx).join(" ")
+            var w = context.measureText(str).width
+            if (w > fitWidth) {
+                if (idx == 1) {
+                    idx = 2
+                }
+                context.fillText(
+                    words.slice(0, idx - 1).join(" "),
+                    x,
+                    y + lineHeight * currentLine
+                )
+                currentLine++
+                words = words.splice(idx - 1)
+                idx = 1
+            } else {
+                idx++
+            }
+        }
+        if (idx > 0)
+            context.fillText(words.join(" "), x, y + lineHeight * currentLine)
     }
     function canvasImage(image, [x1, y1, x2, y2]) {
         let width = x2 - x1
@@ -356,16 +388,19 @@ function showDataOnCanvas(details) {
                 student_copy_positions.name_of_school[0],
                 student_copy_positions.name_of_school[1]
             )
-            canvasText(
+            printAt(
+                ctx,
                 details.Programme,
                 student_copy_positions.name_of_programme[0],
-                student_copy_positions.name_of_programme[1]
+                student_copy_positions.name_of_programme[1],
+                20,
+                student_copy_positions.name_of_programme[2]
             )
-            canvasText(
-                details.Programme,
-                student_copy_positions.programme_code[0],
-                student_copy_positions.programme_code[1]
-            )
+            // canvasText(
+            //     details.Programme,
+            //     student_copy_positions.programme_code[0],
+            //     student_copy_positions.programme_code[1]
+            // )
             canvasText(
                 details["Aadhar no"] ? details["Aadhar no"] : "",
                 student_copy_positions.aadhar_id[0],
@@ -401,10 +436,13 @@ function showDataOnCanvas(details) {
                 office_copy_positions.name_of_school[0],
                 office_copy_positions.name_of_school[1]
             )
-            canvasText(
+            printAt(
+                ctx,
                 details.Programme,
                 office_copy_positions.name_of_programme[0],
-                office_copy_positions.name_of_programme[1]
+                office_copy_positions.name_of_programme[1],
+                20,
+                office_copy_positions.name_of_programme[2]
             )
             canvasText(
                 details["Aadhar no"] ? details["Aadhar no"] : "",
@@ -421,26 +459,26 @@ function showDataOnCanvas(details) {
     draw()
 }
 
-let data = {
-    "Aadhar Image(.jpg)": null,
-    "Aadhar no": null,
-    Batch: "2019-2022",
-    "Date of Birth": "23/03/2000",
-    Email: "notshekhar@gmail.com",
-    Father_s_name: "Naresh Tyagi",
-    "Fee Status": "Submitted",
-    Gender: "Male",
-    "Mobile no": "9027760089",
-    "Photo Upload(.jpg)": null,
-    Programme: "B.Tech",
-    Roll_Number: "18/BEC/046",
-    SCHOOL: "School of Information and Technology",
-    Semester: "V",
-    "Signature(.jpg)": null,
-    Specialization: "Electronic and Communication",
-    Student_Name: "Shekhar Tyagi",
-    id: 1,
-}
+// let data = {
+//     "Aadhar Image(.jpg)": null,
+//     "Aadhar no": null,
+//     Batch: "2019-2022",
+//     "Date of Birth": "23/03/2000",
+//     Email: "notshekhar@gmail.com",
+//     Father_s_name: "Naresh Tyagi",
+//     "Fee Status": "Submitted",
+//     Gender: "Male",
+//     "Mobile no": "9027760089",
+//     "Photo Upload(.jpg)": null,
+//     Programme: "B.Tech",
+//     Roll_Number: "18/BEC/046",
+//     SCHOOL: "School of Information and Technology",
+//     Semester: "V",
+//     "Signature(.jpg)": null,
+//     Specialization: "Electronic and Communication",
+//     Student_Name: "Shekhar Tyagi",
+//     id: 1,
+// }
 // showDataOnCanvas(data)
 
 //admin login
