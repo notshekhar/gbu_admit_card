@@ -101,7 +101,7 @@
 }
 .body {
     position: relative;
-    height: 550px;
+    height: 560px;
     width: 100%;
     transition: all 2000ms;
     background-image: var(--im);
@@ -151,11 +151,11 @@
 }
 .wrap_body {
     position: absolute;
-    height: 490px;
+    height: 510px;
     /* height: 300px; */
     width: 400px;
     right: 100px;
-    top: calc(50% - 245px);
+    top: calc(50% - 255px);
     /* top: calc(50% - 150px); */
     background: white;
     border-radius: 2px;
