@@ -111,7 +111,8 @@ async function insert() {
         }
     }
     // console.log(form[form.length - 1])
-    end()
+    // end()
+    console.log("insert done")
 }
 insert()
 
@@ -123,6 +124,7 @@ function update() {
             [roll_no]
         )
     })
-    end()
+    // end()
+    console.log("update done")
 }
 update()
