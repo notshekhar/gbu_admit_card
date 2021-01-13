@@ -99,7 +99,7 @@ choose_photo.onchange = (e) => {
         drag_drop.innerHTML = file.name
         let image = new Image()
         image.src = reader.result
-        image.height = 100
+        image.height = 60
         drag_drop.prepend(image)
     }
 }
@@ -138,7 +138,7 @@ drag_drop.ondrop = (e) => {
         drag_drop.innerHTML = file.name
         let image = new Image()
         image.src = reader.result
-        image.height = 100
+        image.height = 60
         drag_drop.prepend(image)
     }
 }
@@ -162,7 +162,7 @@ choose_signature.onchange = (e) => {
         drop_signature.innerHTML = file.name
         let image = new Image()
         image.src = reader.result
-        image.height = 100
+        image.height = 60
         drop_signature.prepend(image)
     }
 }
@@ -202,7 +202,7 @@ drop_signature.ondrop = (e) => {
         drop_signature.innerHTML = file.name
         let image = new Image()
         image.src = reader.result
-        image.height = 100
+        image.height = 60
         drop_signature.prepend(image)
     }
 }
@@ -260,7 +260,7 @@ submit.onclick = async () => {
             }),
         })
         let resData = await res.json()
-        console.log(resData)
+        // console.log(resData)
         if (resData.get) {
             if (resData.data.length <= 0) {
                 alert("No data found re-try entering roll no and date of birth")
