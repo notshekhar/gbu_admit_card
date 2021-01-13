@@ -112,9 +112,9 @@ async function insert() {
     }
     // console.log(form[form.length - 1])
     // end()
-    console.log("insert done")
+    // console.log("insert done")
 }
-insert()
+// insert()
 
 function update() {
     fee.forEach(async (f) => {
@@ -124,7 +124,6 @@ function update() {
             [roll_no]
         )
     })
-    // end()
-    console.log("update done")
+    end()
 }
-update()
+// update()
